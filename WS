@@ -40,3 +40,12 @@ Begin
 	end process;
 
 --...................................................................................--		
+
+	process(clock, ns, reset)
+	Begin
+		if (reset = '1') then ps <= st0; -- not watering state
+		Elsif (clock = '1' ) then ps <= ns; -- next state transition
+		End if;
+	End process ;
+
+--...................................................................................--
