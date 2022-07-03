@@ -28,3 +28,15 @@ Architecture fsm of myFsm is
 Begin
 
 --...................................................................................--
+	process(ps)
+	Begin
+		case ps is
+		when st0 => 
+			myState <= "00" ; mySeg <= "1000000" ; --for -
+		when st1 =>
+			myState <= "01" ; mySeg <= "1110110" ;--for H
+		--when others =>
+		end case ;
+	end process;
+
+--...................................................................................--		

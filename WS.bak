@@ -21,3 +21,10 @@ Entity myFsm is
 End myFsm;
 
 --...................................................................................--
+
+Architecture fsm of myFsm is
+	Type stateT is (st0, st1); -- state type
+	Signal ps, ns : stateT; -- ps:present state - ns:next state
+Begin
+
+--...................................................................................--
