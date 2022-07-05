@@ -5,3 +5,20 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity tb is
 
 end entity;
+
+
+architecture testBench of tb is
+
+  component WS
+
+	Port 
+		(
+		temp, light, clock, reset : in std_logic;
+	        moist : in std_logic_vector (2 downto 0);
+		myState : out std_logic_vector(1 downto 0);
+		mySeg : out std_logic_vector(6 downto 0);
+		moistOut : out std_logic_vector (2 downto 0);
+		tempOut : out std_logic;
+		lightOut : out std_logic
+		);
+ end component;
