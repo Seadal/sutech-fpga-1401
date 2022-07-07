@@ -7,3 +7,12 @@ entity seg
 		seg: out std_logic_vector (6 downto 0)
 	      );
 END seg;
+
+--...................................................................................--
+
+architecture of ssd is
+	begin
+		ssd <= "1001000" when display = "01" 
+		else
+			"1111110";
+end architecture;
