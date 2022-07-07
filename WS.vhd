@@ -23,6 +23,7 @@ End myFsm;
 Architecture fsm of myFsm is
 	Type stateT is (st0, st1); -- state type
 	Signal ps, ns : stateT; -- ps:present state - ns:next state
+	Signal S : std_logic_vector (1 downto 0);
 Begin
 
 --...................................................................................--
@@ -55,6 +56,7 @@ Begin
 			When st0 => 
 				If (temp = '0' and light = '0') and (moist <= "011") then
 				ns <= st1;  moistOut <= moist; tempOut <= temp; lightOut <= light; -- condition 2
+				
 				Elsif (temp = '1' or light = '1') and (moist <= "001") then
 				ns <= st1; moistOut <= moist; tempOut <= temp; lightOut <= light; -- condition 3
 				Else 
@@ -68,7 +70,9 @@ Begin
 				Else 
 				ns <= st1; moistOut <= moist; tempOut <= temp; lightOut <= light; --staying at st1 (condition 1 and 4)
 				end if;
-			--when others
+			When others =>
+				ns<=st1;
+				
 		End case;
 End process ;
 
