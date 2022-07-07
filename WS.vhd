@@ -21,9 +21,19 @@ End myFsm;
 --...................................................................................--
 
 Architecture fsm of myFsm is
+
+	Component seg
+		PORT (
+			display : in std_logic_vector ( 1 downto 0);
+			seg: out std_logic_vector ( 6 downto 0)
+		      );
+	End Component;
+
 	Type stateT is (st0, st1); -- state type
 	Signal ps, ns : stateT; -- ps:present state - ns:next state
 	Signal S : std_logic_vector (1 downto 0);
+	Attribute enum_encoding : string;
+	Attribute enum_encoding of stateT : type is "00 01";
 Begin
 
 --...................................................................................--
