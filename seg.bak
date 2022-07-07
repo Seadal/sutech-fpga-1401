@@ -12,6 +12,7 @@ END seg;
 
 architecture of ssd is
 	begin
-		ssd <= "1001000" when display = "01" else
+		ssd <= "1001000" when display = "01" 
+		else
 			"1111110";
 end architecture;
