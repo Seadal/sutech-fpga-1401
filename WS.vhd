@@ -11,7 +11,7 @@ Entity myFsm is
 		temp, light, clock, reset : in std_logic;
 	        moist : in std_logic_vector (2 downto 0);
 		myState : out std_logic_vector(1 downto 0);
-		sseg=mySeg : out std_logic_vector(6 downto 0);
+		mySeg : out std_logic_vector(6 downto 0);
 		moistOut : out std_logic_vector (2 downto 0);
 		tempOut : out std_logic;
 		lightOut : out std_logic
@@ -36,7 +36,7 @@ Architecture fsm of myFsm is
 	Attribute enum of stateT : type is "00 01";
 Begin
 
-	sev : seg7 port map (display => S, seg7 => sseg);
+	sev : seg port map (display => S, seg => mySeg);
 --...................................................................................--		
 
 	process(clock, ns, reset)
