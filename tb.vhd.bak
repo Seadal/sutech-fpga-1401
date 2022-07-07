@@ -30,25 +30,3 @@ architecture testBench of tb is
 	 signal moistOut : out std_logic_vector (2 downto 0);
 	 signal tempOut : out std_logic;
 	 signal lightOut : out std_logic
-
-	constat cp: time := 100 ns;
-	signal stop: boolean;
-
-begin
-
-porting WS port map 	
-	(
-		temp => temp;
-		light => light;
-		clock => clock;
-		reset => reset;
-		moist => moist;
-		myState => myState;
-		mySeg => mySeg;
-		moistOut => moistOut;
-		tempOut=> tempOut;
-		lightOut => lightOut;
-	);
-
-
-
