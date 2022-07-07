@@ -1,13 +1,13 @@
 library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-
+use IEEE.Std_logic_1164.all;
+use IEEE.Numeric_Std.all;
 
 entity tb is
 
 end entity;
 
 
-architecture testBench of tb is
+architecture of tb is
 
   component WS
 
@@ -36,19 +36,70 @@ architecture testBench of tb is
 
 begin
 
-porting WS port map 	
+porting : WS port map 	
 	(
-		temp => temp;
-		light => light;
-		clock => clock;
-		reset => reset;
-		moist => moist;
-		myState => myState;
-		mySeg => mySeg;
-		moistOut => moistOut;
-		tempOut=> tempOut;
-		lightOut => lightOut;
+		temp => temp,
+		light => light,
+		clock => clock,
+		reset => reset,
+		moist => moist,
+		myState => myState,
+		mySeg => mySeg,
+		moistOut => moistOut,
+		tempOut=> tempOut,
+		lightOut => lightOut
 	);
+ex: process
 
+  begin
+
+    temp <= '0';
+    light <= '0';
+    moist <= "110";
+    wait for cp;
+    temp <= '1';
+    light <= '1';
+    moist <= "001";
+    wait for cp;
+    TEMP_IN <= '0';
+    LIGHT_IN <= '0';
+    moist <= "101";
+    wait for cp;
+    temp <= '0';
+    light <= '0';
+    moist <= "011";
+    wait for cp;
+    temp <= '0';
+    light <= '0';
+    moist <= "111";
+    wait for cp;
+    temp <= '1';
+    light <= '1';
+    moist <= "010";
+    wait for cp;
+    temp <= '1';
+    light <= '1';
+    moist <= "011";
+    wait for cp;
+    temp <= '1';
+    light <= '1';
+    moist <= "010";
+    wait for cp;
+
+
+    STOP <= true;
+    wait;
+  end process;
+
+  clocking: process
+  begin
+    while not stop loop
+      clock <= '0', '1' after cp / 2;
+      wait for cp;
+    end loop;
+    wait;
+  end process;
+
+end;
 
 
