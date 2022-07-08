@@ -5,7 +5,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 --...................................................................................--
 
-Entity myFsm is
+Entity WS is
 	Port 
 		(
 		temp, light, clock, reset : in std_logic;
@@ -16,11 +16,11 @@ Entity myFsm is
 		tempOut : out std_logic;
 		lightOut : out std_logic
 		);
-End myFsm;
+End WS;
 
 --...................................................................................--
 
-Architecture fsm of myFsm is
+Architecture fsm of WS is
 
 	Component seg
 		PORT (

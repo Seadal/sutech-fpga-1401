@@ -23,20 +23,20 @@ architecture test of tb is
 		);
  end component;
 
-	 signal temp, light, clock, reset : in std_logic;
-	 signal moist : in std_logic_vector (2 downto 0);
-	 signal myState : out std_logic_vector(1 downto 0);
-	 signal mySeg : out std_logic_vector(6 downto 0);
-	 signal moistOut : out std_logic_vector (2 downto 0);
-	 signal tempOut : out std_logic;
-	 signal lightOut : out std_logic
+	 signal temp, light, clock, reset : std_logic := '0';
+	 signal moist : std_logic_vector (2 downto 0) :="000";
+	 signal myState : std_logic_vector(1 downto 0) :="00";
+	 signal mySeg : std_logic_vector(6 downto 0) :="0000000";
+	 signal moistOut : std_logic_vector (2 downto 0) :="000";
+	 signal tempOut : std_logic :='0';
+	 signal lightOut : std_logic  :='0';
 
-	constat cp: time := 100 ns;
-	signal stop: boolean;
+	--constant cp: time := 100 ns;
+	--signal stop: boolean;
 
 begin
 
-porting : WS port map 	
+ porting : WS port map 	
 	(
 		temp => temp,
 		light => light,
@@ -49,57 +49,146 @@ porting : WS port map
 		tempOut=> tempOut,
 		lightOut => lightOut
 	);
-ex: process
+process 
+  begin
+	clock <= '1';
+	wait for 5 ns;
+
+	clock <= '0'; 
+	wait for 20 ns;
+end process;
+
+process
 
   begin
 
-    temp <= '0';
-    light <= '0';
-    moist <= "110";
-    wait for cp;
-    temp <= '1';
-    light <= '1';
-    moist <= "001";
-    wait for cp;
-    TEMP_IN <= '0';
-    LIGHT_IN <= '0';
-    moist <= "101";
-    wait for cp;
-    temp <= '0';
-    light <= '0';
-    moist <= "011";
-    wait for cp;
-    temp <= '0';
-    light <= '0';
-    moist <= "111";
-    wait for cp;
-    temp <= '1';
-    light <= '1';
-    moist <= "010";
-    wait for cp;
-    temp <= '1';
-    light <= '1';
-    moist <= "011";
-    wait for cp;
-    temp <= '1';
-    light <= '1';
-    moist <= "010";
-    wait for cp;
-
-
-    STOP <= true;
-    wait;
+		wait for 10 ns;
+		temp <= '0';
+		light <= '0';
+		moist <= "000";
+		wait for 10 ns;
+		temp <= '0';
+		light <= '1';
+		moist <= "000";	
+		wait for 10 ns;
+		temp <= '1';
+		light <= '0';
+		moist <= "000";	
+		wait for 10 ns;
+		temp <= '0';
+		light <= '0';
+		moist <= "001";
+		wait for 10 ns;
+		temp <= '0';
+		light <= '1';
+		moist <= "001";
+		wait for 10 ns;
+		temp <= '1';
+		light <= '1';
+		moist <= "001";
+		wait for 10 ns;
+		temp <= '0';
+		light <= '0';
+		moist <= "010";
+		wait for 10 ns;
+		temp <= '1';
+		light <= '1';
+		moist <= "000";
+		wait for 10 ns;
+		temp <= '0';
+		light <= '1';
+		moist <= "010";
+		wait for 10 ns;
+		temp <= '0';
+		light <= '1';
+		moist <= "001";
+		wait for 10 ns;
+		temp <= '1';
+		light <= '0';
+		moist <= "010";
+		wait for 10 ns;
+		temp <= '1';
+		light <= '1';
+		moist <= "010";
+		wait for 10 ns;
+		temp <= '0';
+		light <= '0';
+		moist <= "011";
+		wait for 10 ns;
+		temp <= '0';
+		light <= '1';
+		moist <= "011";
+		wait for 10 ns;
+		temp <= '1';
+		light <= '0';
+		moist <= "011";
+		wait for 10 ns;
+		temp <= '1';
+		light <= '1';
+		moist <= "011";
+		wait for 10 ns;
+		temp <= '0';
+		light <= '0';
+		moist <= "011";
+		wait for 10 ns;
+		temp <= '0';
+		light <= '0';
+		moist <= "100";
+		wait for 10 ns;
+		temp <= '0';
+		light <= '1';
+		moist <= "100";
+		wait for 10 ns;
+		temp <= '1';
+		light <= '0';
+		moist <= "100";
+		wait for 10 ns;
+		temp <= '1';
+		light <= '1';
+		moist <= "100";
+		wait for 10 ns;
+		temp <= '0';
+		light <= '0';
+		moist <= "101";
+		wait for 10 ns;
+		temp <= '0';
+		light <= '0';
+		moist <= "110";
+		wait for 10 ns;
+		temp <= '0';
+		light <= '1';
+		moist <= "110";
+		wait for 10 ns;
+		temp <= '1';
+		light <= '0';
+		moist <= "110";
+		wait for 10 ns;
+		temp <= '1';
+		light <= '1';
+		moist <= "110";
+		wait for 10 ns;
+		temp <= '0';
+		light <= '0';
+		moist <= "111";
+		wait for 10 ns;
+		temp <= '0';
+		light <= '1';
+		moist <= "111";
+		wait for 10 ns;
+		temp <= '1';
+		light <= '0';
+		moist <= "111";
+		wait for 10 ns;
+		temp <= '1';
+		light <= '1';
+		moist <= "111";
+		wait for 10 ns;
+		temp <= '1';
+		light <= '1';
+		moist <= "111";
+		wait for 10 ns;
   end process;
 
-  clocking: process
-  begin
-    while not stop loop
-      clock <= '0', '1' after cp / 2;
-      wait for cp;
-    end loop;
-    wait;
-  end process;
-
-end;
+end Architecture;
 
 

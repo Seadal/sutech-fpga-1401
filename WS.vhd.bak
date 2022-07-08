@@ -36,7 +36,7 @@ Architecture fsm of myFsm is
 	Attribute enum of stateT : type is "00 01";
 Begin
 
-	sev : seg7 port map (display => S, seg => mySeg);
+	sev : seg port map (display => S, seg => mySeg);
 --...................................................................................--		
 
 	process(clock, ns, reset)
