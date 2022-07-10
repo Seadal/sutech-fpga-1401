@@ -3,16 +3,16 @@ USE ieee.std_logic_1164.all;
 
 --...................................................................................--
 
-entity 7seg is
+entity seg is
 	Port (
 		display : in std_logic_vector ( 1 downto 0);
-		seg: out std_logic_vector (6 downto 0)
+		ssd: out std_logic_vector (6 downto 0)
 	      );
-END 7seg;
+END seg;
 
 --...................................................................................--
 
-architecture Behavioral of 7seg is
+architecture Behavioral of seg is
 	begin
 		ssd <= "1001000" when display = "01" 
 		else
